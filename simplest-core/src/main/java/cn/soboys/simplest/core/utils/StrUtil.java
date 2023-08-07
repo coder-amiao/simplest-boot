@@ -1,7 +1,5 @@
-package cn.soboys.simplest.core;
+package cn.soboys.simplest.core.utils;
 
-import java.io.File;
-import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -15,7 +13,7 @@ import java.util.Date;
  * @date 2023/8/1 22:47
  * @webSite https://github.com/coder-amiao
  */
-public class StringUtil extends org.apache.commons.lang3.StringUtils{
+public class StrUtil extends org.dromara.hutool.core.text.StrUtil {
 
     private static final char SEPARATOR = '_';
     private static final String CHARSET_NAME = "UTF-8";
