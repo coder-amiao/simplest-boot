@@ -13,6 +13,12 @@
     <modules>
         <module>simplest-core</module>
         <module>simplest-generator</module>
+        <module>simples-dependency</module>
+        <module>simplest-cache</module>
+        <module>simplest-json</module>
+        <module>simplest-openapi</module>
+        <module>simplest-permission</module>
+        <module>simplest-logging</module>
     </modules>
 
     <parent>
