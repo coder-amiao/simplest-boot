@@ -7,7 +7,8 @@
     <artifactId>simplest-boot-project</artifactId>
     <version>2.0.0</version>
     <name>simplest-boot-project</name>
-    <description>业务通用生态核心组件</description>
+    <description>开箱即用Simplest组织旨在为项目快速开发提供一系列的基础能力，方便用户根据项目需求快速进行功能拓展 快速构建项目脚手架
+        解决重复繁琐工作 高效开发 自由组合`stater`实现业务插拔组件化,让你只需专注于业务开发</description>
     <packaging>pom</packaging>
 
     <modules>
