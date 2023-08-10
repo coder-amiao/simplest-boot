@@ -4,35 +4,80 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.soboys</groupId>
-    <artifactId>simplest-boot-project</artifactId>
+    <artifactId>simplest-boot-start-parent</artifactId>
     <version>2.0.0</version>
-    <name>simplest-boot-project</name>
+    <name>simplest-boot-start-parent</name>
     <description>开箱即用Simplest组织旨在为项目快速开发提供一系列的基础能力，方便用户根据项目需求快速进行功能拓展 快速构建项目脚手架
         解决重复繁琐工作 高效开发 自由组合`stater`实现业务插拔组件化,让你只需专注于业务开发</description>
     <packaging>pom</packaging>
 
     <modules>
+        <module>simplest-spring-boot-dependency</module>
         <module>simplest-core</module>
-        <module>simples-spring-boot-dependency</module>
-        <module>simplest-spring-boot-starter-generator</module>
+        <module>simplest-spring-boot-starter</module>
         <module>simplest-spring-boot-starter-cache</module>
+        <module>simplest-spring-boot-starter-generator</module>
+        <module>simplest-spring-boot-starter-http</module>
+        <module>simplest-spring-boot-starter-Ip2region</module>
+        <module>simplest-spring-boot-starter-jpa-plus</module>
         <module>simplest-spring-boot-starter-json</module>
+        <module>simplest-spring-boot-starter-logging</module>
         <module>simplest-spring-boot-starter-openapi</module>
         <module>simplest-spring-boot-starter-permission</module>
-        <module>simplest-spring-boot-starter-logging</module>
-        <module>simplest-spring-boot-starter</module>
         <module>simplest-spring-boot-starter-web</module>
-        <module>simplest-spring-boot-starter-jpa-plus</module>
-        <module>simplest-spring-boot-starter-Ip2region</module>
-        <module>simplest-spring-boot-starter-http</module>
     </modules>
 
 
     <properties>
         <java.version>1.8</java.version>
         <simplest.version>2.0.0</simplest.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <gpg.passphrase>1234qwer</gpg.passphrase>
+        <gpg.keyname>E933FBC878FB2EC0900A2ABAF79C3CD9E9E6A8EF</gpg.keyname>
+        <gpg.homedir>/Users/xiangyong/.gnupg</gpg.homedir>
     </properties>
 
+    <!-- 许可证信息，这里是Apache 2.0的许可证，大家根据实际情况修改 -->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version2.0</name>
+            <url>https://www.apache.org/licenses/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+    <!--   开发人员信息         -->
+    <developers>
+        <developer>
+            <name>三时</name>
+            <email>xymarcus@163.com</email>
+        </developer>
+    </developers>
+
+    <!--   项目仓库信息         -->
+    <scm>
+        <connection>scm:git:https://github.com/zw201913/jtile38.git</connection>
+        <developerConnection>https://github.com/coder-amiao/simplest-boot</developerConnection>
+        <url>https://github.com/coder-amiao/simplest-boot.git</url>
+        <tag>v${project.version}</tag>
+    </scm>
+
+    <!-- 中央仓库地址配置，不需要修改 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
 
@@ -40,15 +85,9 @@
 
             <dependency>
                 <groupId>cn.soboys</groupId>
-                <artifactId>simples-spring-boot-dependency</artifactId>
+                <artifactId>simplest-spring-boot-dependency</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
-                <version>${simplest.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>cn.soboys</groupId>
-                <artifactId>simplest-spring-boot-starter-cache</artifactId>
                 <version>${simplest.version}</version>
             </dependency>
 
@@ -60,7 +99,37 @@
 
             <dependency>
                 <groupId>cn.soboys</groupId>
+                <artifactId>simplest-spring-boot-starter</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-spring-boot-starter-cache</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
                 <artifactId>simplest-spring-boot-starter-generator</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-spring-boot-starter-http</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-spring-boot-starter-Ip2region</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-spring-boot-starter-jpa-plus</artifactId>
                 <version>${simplest.version}</version>
             </dependency>
 
@@ -83,10 +152,27 @@
                 <version>${simplest.version}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>cn.soboys</groupId>
                 <artifactId>simplest-spring-boot-starter-permission</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-spring-boot-starter-web</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-web-biz</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-web-rest</artifactId>
                 <version>${simplest.version}</version>
             </dependency>
 
@@ -97,8 +183,66 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!-- Source -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Javadoc工具 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <configuration>
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
