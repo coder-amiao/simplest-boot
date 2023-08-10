@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.soboys.simplest.json.config.JsonSerializerConfig
+
+
+
+
+

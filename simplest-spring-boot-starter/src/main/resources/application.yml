@@ -1,0 +1,6 @@
+server:
+  port: 9999
+
+simplest:
+  json:
+    date-form: timestamp

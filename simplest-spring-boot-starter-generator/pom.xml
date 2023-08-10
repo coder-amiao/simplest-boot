@@ -32,16 +32,31 @@
             <artifactId>simplest-core</artifactId>
         </dependency>
 
+        <!--封装mybatisPlus 代码生成工具类  simplest-jpa代码生成-->
 
+        <!--生成器依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.4.1</version>
+            <optional>true</optional>
+        </dependency>
 
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.28</version>
+            <optional>true</optional>
+        </dependency>
 
         <!--代码生成依赖的模板引擎-->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.31</version>
+            <optional>true</optional>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

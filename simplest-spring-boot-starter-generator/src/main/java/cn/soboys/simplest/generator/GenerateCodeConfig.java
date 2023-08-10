@@ -1,6 +1,7 @@
 package cn.soboys.simplest.generator;
 
 
+import lombok.Data;
 
 /**
  * @author 公众号 程序员三时
@@ -16,7 +17,9 @@ public class GenerateCodeConfig {
      **/
     private String author;
 
-
+    /**
+     * 版本
+     */
     private String version="1.0.0";
 
     /**
@@ -34,5 +37,25 @@ public class GenerateCodeConfig {
      * (模型驱动数据库。所以不需要实体类生成。而是由实体类生成通用service，repository)
      */
     private String className;
+
+
+
+
+    /**
+     * 数据库驱动
+     */
+    private String driverName;
+    /**
+     * 数据库连接用户名
+     */
+    private String username;
+    /**
+     * 数据库连接密码
+     */
+    private String password;
+    /**
+     * 数据库连接url
+     */
+    private String url;
 
 }
