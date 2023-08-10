@@ -12,9 +12,14 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring-boot.version>2.7.9</spring-boot.version>
+        <!--工具-->
         <hutool-all.version>6.0.0-M4</hutool-all.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <guava.version>32.0.1-jre</guava.version>
+        <ip2region.version>2.7.0</ip2region.version>
+        <!--文档OpenAPI-->
+        <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+        <knife4j-springdoc-ui.version>3.0.3</knife4j-springdoc-ui.version>
     </properties>
 
     <dependencyManagement>
@@ -53,6 +58,29 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+
+            <!--ip定位-->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
+            </dependency>
+
+
+            <!--OPEN AI 接口文档-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-springdoc-ui</artifactId>
+                <version>${knife4j-springdoc-ui.version}</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>

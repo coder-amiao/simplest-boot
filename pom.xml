@@ -23,6 +23,8 @@
         <module>simplest-spring-boot-starter</module>
         <module>simplest-spring-boot-starter-web</module>
         <module>simplest-spring-boot-starter-jpa-plus</module>
+        <module>simplest-spring-boot-starter-Ip2region</module>
+        <module>simplest-spring-boot-starter-http</module>
     </modules>
 
 
