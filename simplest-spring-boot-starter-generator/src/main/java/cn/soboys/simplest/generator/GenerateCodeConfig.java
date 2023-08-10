@@ -1,6 +1,6 @@
 package cn.soboys.simplest.generator;
 
-import lombok.Data;
+
 
 /**
  * @author 公众号 程序员三时

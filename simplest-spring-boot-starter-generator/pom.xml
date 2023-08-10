@@ -32,6 +32,9 @@
             <artifactId>simplest-core</artifactId>
         </dependency>
 
+
+
+
         <!--代码生成依赖的模板引擎-->
         <dependency>
             <groupId>org.freemarker</groupId>

@@ -6,13 +6,13 @@
     <groupId>cn.soboys</groupId>
     <artifactId>simplest-boot-project</artifactId>
     <version>2.0.0</version>
-    <name>simplest-boot</name>
+    <name>simplest-boot-project</name>
     <description>业务通用生态核心组件</description>
     <packaging>pom</packaging>
 
     <modules>
-        <module>simples-spring-boot-dependency</module>
         <module>simplest-core</module>
+        <module>simples-spring-boot-dependency</module>
         <module>simplest-spring-boot-starter-generator</module>
         <module>simplest-spring-boot-starter-cache</module>
         <module>simplest-spring-boot-starter-json</module>
