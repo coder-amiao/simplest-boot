@@ -1,0 +1,8 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.soboys.simplest.cache.property.RedisProperties\,
+cn.soboys.simplest.cache.config.RedisCacheConfiguration\,
+cn.soboys.simplest.cache.config.SpringCacheConfig\
+
+
+
+
