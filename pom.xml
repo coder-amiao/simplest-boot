@@ -176,6 +176,18 @@
                 <version>${simplest.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-web-rest</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-cache-memory-extend</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -17,9 +17,13 @@
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <guava.version>32.0.1-jre</guava.version>
         <ip2region.version>2.7.0</ip2region.version>
+        <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
         <!--文档OpenAPI-->
         <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
         <knife4j-springdoc-ui.version>3.0.3</knife4j-springdoc-ui.version>
+        <!--jpa querdsl-->
+        <querydsl.version>5.0.0</querydsl.version>
+       <jsqlparser.version>3.2</jsqlparser.version>
     </properties>
 
     <dependencyManagement>
@@ -66,6 +70,13 @@
                 <version>${ip2region.version}</version>
             </dependency>
 
+            <!--jwt token-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jsonwebtoken.version}</version>
+            </dependency>
+
 
             <!--OPEN AI 接口文档-->
             <dependency>
@@ -78,6 +89,29 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-springdoc-ui</artifactId>
                 <version>${knife4j-springdoc-ui.version}</version>
+            </dependency>
+
+
+            <!--jpa-->
+
+            <!--QueryDSL支持-->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <!--QueryDSL支持-->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
+            <!-- sql 解析拦截 -->
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
             </dependency>
 
         </dependencies>
