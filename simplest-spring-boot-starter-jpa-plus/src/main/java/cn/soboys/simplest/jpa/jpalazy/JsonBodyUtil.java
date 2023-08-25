@@ -1,16 +1,12 @@
 package cn.soboys.simplest.jpa.jpalazy;
 
+import cn.soboys.simplest.core.utils.EntityUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.disco.core.Values;
-import org.disco.core.cache.thread.ThreadCache;
-import org.disco.core.domain.BaseEntity;
-import org.disco.core.domain.IJsonObject;
-import org.disco.core.enums.ThreadCacheKey;
-
 import org.hibernate.Hibernate;
+import org.hibernate.collection.internal.AbstractPersistentCollection;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Component;
@@ -159,7 +155,7 @@ public class JsonBodyUtil {
         }
 
         //忽略懒加载
-        if (jsonBody.getIgnoreLazy() && object != null && object instanceof BaseEntity && !Hibernate.isInitialized(object)) {
+        if (jsonBody.getIgnoreLazy() && object != null  && !Hibernate.isInitialized(object)) {
             return null;
         }
 
@@ -204,7 +200,6 @@ public class JsonBodyUtil {
             for (Object propName : originMap.keySet().toArray()) {
                 Object propVal = originMap.get(propName);
                 boolean needParse = needParse(propVal);
-                propVal = checkAndEncrypt(encrypts, propName, propVal, needParse);
                 boolean hasSubPropSerial = hasSubPropSerial(level, parentPropSerial, propName, propVal, includeMap);
                 if (canRead(level, includes, includeAll, excludes, (String) propName, needParse, hasSubPropSerial, parentPropSerial, rootHeader, jsonBody, result)) {
                     loadPropVal(level, parentPropSerial, rootHeader, jsonBody, includeMap, excludeMap, encryptMap, exclNestMap, result, (String) propName, propVal, needParse);
@@ -214,7 +209,7 @@ public class JsonBodyUtil {
             BeanWrapper wrapper = new BeanWrapperImpl(object);
             PropertyDescriptor[] propertys = wrapper.getPropertyDescriptors();
             for (int i = 0; i < propertys.length; i++) {
-                JsonIgnore jsonIgnore = ClassUtil.findAnnotation(JsonIgnore.class, object,propertys[i]);
+                JsonIgnore jsonIgnore = cn.soboys.simplest.core.utils.ClassUtil.findAnnotation(JsonIgnore.class, object,propertys[i]);
                 String propName = propertys[i].getName();
                 if (!wrapper.isReadableProperty(propName) || propertys[i].getReadMethod() == null || ignorePropertyNames.contains(propName) || jsonIgnore != null) {
                     continue;
@@ -223,7 +218,6 @@ public class JsonBodyUtil {
                 try {
                     Object propVal = readMethod.invoke(object);
                     boolean needParse = needParse(propVal);
-                    propVal = checkAndEncrypt(encrypts, propName, propVal, needParse);
                     boolean hasSubPropSerial = hasSubPropSerial(level, parentPropSerial, propName, propVal, includeMap);
                     if (canRead(level, includes, includeAll, excludes, propName, needParse, hasSubPropSerial, parentPropSerial, rootHeader, jsonBody, result)) {
                         loadPropVal(level, parentPropSerial, rootHeader, jsonBody, includeMap, excludeMap, encryptMap, exclNestMap, result, propName, propVal, needParse);
@@ -239,15 +233,7 @@ public class JsonBodyUtil {
         return result;
     }
 
-    private static Object checkAndEncrypt(Set<String> encrypts, Object propName, Object propVal, boolean needParse) {
-        if (!needParse && encrypts.contains(propName)) {
-            try {
-                propVal = EncryptUtil.desEncrypt(String.valueOf(propVal));
-            } catch (Exception e) {
-            }
-        }
-        return propVal;
-    }
+
 
     private static boolean canRead(int level, Set<String> includes, boolean includeAll, Set<String> excludes, String propName, boolean needParse, boolean hasSubPropSerial, String parentPropSerial, String rootHeader, JsonBodyVo jsonBody, Map<String, Object> result) {
         boolean isRead = false;
@@ -304,9 +290,7 @@ public class JsonBodyUtil {
                                     Map<Integer, Map<String, Set<String>>> encryptMap,
                                     Map<String, Map<String, Set<String>>> exclNestMap,
                                     Map<String, Object> result, String propName, Object propVal, boolean needParse) {
-        if (hasIgnore(parentPropSerial, propName)) {
-            return;
-        }
+
         if (needParse) {
             Object subObj = null;
             if (propVal != null) {
@@ -323,14 +307,6 @@ public class JsonBodyUtil {
         }
     }
 
-    private static boolean hasIgnore(String parentPropSerial, String propName) {
-        // 忽略敏感字段
-        Set<String> fields = ThreadCache.get(ThreadCacheKey.SENSITIVE_FIELD.key(), Set.class);
-        if (fields != null && fields.contains(parentPropSerial + DOT_CHAR + propName)) {
-            return true;
-        }
-        return false;
-    }
 
     private static void parseExpression(boolean isCollection, JsonBodyVo jsonBody,
                                         Map<Integer, Map<String, Set<String>>> includeMap,
@@ -480,7 +456,7 @@ public class JsonBodyUtil {
     }
 
     private static boolean isExpressionParsed() {
-        if (Values.getInstance().getJsonBodyDebug()) {
+        if (true) {
             return false;
         }
         if (includeMaps.get(getGenericMethodName()) != null && excludeMaps.get(getGenericMethodName()) != null) {
@@ -500,12 +476,6 @@ public class JsonBodyUtil {
             jsonBodyVo.setMaxLevel(jsonBody.maxLevel());
             jsonBodyVo.setStrategy(jsonBody.strategy());
             jsonBodyVo.setIgnoreLazy(jsonBody.ignoreLazy());
-        }
-        // 检测敏感字段
-        if (jsonBody == null && ThreadCache.get(ThreadCacheKey.SENSITIVE_FIELD.key()) != null) {
-            jsonBodyVo = new JsonBodyVo();
-            jsonBodyVo.setMaxLevel(Integer.MAX_VALUE);
-            jsonBodyVo.setStrategy(JsonBody.Strategy.DEFAULT_SHOW);
         }
         return jsonBodyVo;
     }

@@ -184,7 +184,19 @@
 
             <dependency>
                 <groupId>cn.soboys</groupId>
+                <artifactId>simplest-cache-core</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
                 <artifactId>simplest-cache-memory-extend</artifactId>
+                <version>${simplest.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.soboys</groupId>
+                <artifactId>simplest-cache-redis-extend</artifactId>
                 <version>${simplest.version}</version>
             </dependency>
 

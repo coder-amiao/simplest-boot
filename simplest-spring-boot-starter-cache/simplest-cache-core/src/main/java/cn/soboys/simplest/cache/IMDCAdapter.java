@@ -1,4 +1,4 @@
-package thread;
+package cn.soboys.simplest.cache;
 
 import java.util.Map;
 

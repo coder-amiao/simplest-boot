@@ -9,18 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>simplest-cache-memory-extend</artifactId>
+    <artifactId>simplest-cache-core</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>cn.soboys</groupId>
-            <artifactId>simplest-cache-core</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>

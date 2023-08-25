@@ -1,4 +1,4 @@
-package thread;
+package cn.soboys.simplest.cache;
 
 import java.io.Closeable;
 import java.util.Map;

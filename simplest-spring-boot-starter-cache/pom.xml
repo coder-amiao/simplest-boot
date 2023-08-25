@@ -15,6 +15,7 @@
 
     <modules>
         <module>simplest-cache-memory-extend</module>
+        <module>simplest-cache-core</module>
         <module>simplest-cache-redis-extend</module>
     </modules>
 
